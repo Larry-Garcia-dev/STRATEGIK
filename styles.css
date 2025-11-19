@@ -1256,7 +1256,8 @@ img {
   }
 }
 
-/*paque 1 */
+/*?==========================parque 1 ==========================?*/
+
 /* 1. Aseguramos que el contenedor tenga el color verde */
 .page-hero.page-hero--green {
     background-color: #2a8515 !important;
@@ -1283,4 +1284,27 @@ img {
         flex: 0 0 20%;
         max-width: 20%;
     }
+}/*?========================== fin parque 1 ==========================?*/
+
+
+
+/*?==========================parque 2 ==========================?*/
+/*paque 1 */
+/* 1. Aseguramos que el contenedor tenga el color verde */
+.page-hero.page-hero--parque2 {
+    background-color: #f38d07 !important;
+    background-image: none !important; /* IMPORTANTE: Esto quita cualquier foto de fondo que esté tapando el color */
 }
+
+/* 2. IMPORTANTE: Cambiamos la "cortina" (overlay) para que sea verde o transparente */
+.page-hero.page-hero--parque2 .hero-overlay {
+    /* Opción A: Hacer el overlay transparente para ver el verde de fondo */
+    background: transparent !important; 
+    opacity: 1 !important;
+    
+    /* Opción B (Alternativa): Si prefieres pintar el overlay de verde directamente, usa esto en su lugar:
+    background-color: #2a8515 !important;
+    opacity: 0.9; 
+    */
+}
+/*?========================== fin parque 2 ==========================?*/
