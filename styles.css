@@ -77,6 +77,10 @@ img {
   height: 50px;
   transition: transform 0.3s ease;
 }
+.py-5{
+  padding-top: 10rem !important;
+  padding-bottom: 3rem !important;
+}
 
 .navbar-brand .logo:hover {
   transform: scale(1.05);
@@ -191,7 +195,7 @@ img {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(245, 126, 18, 0.9) 0%, rgba(255, 154, 60, 0.8) 100%);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.8) 100%);
 }
 
 .hero-content {
@@ -259,7 +263,7 @@ img {
 
 .animate-on-scroll {
   opacity: 0;
-  transform: translateY(50px);
+  /* transform: translateY(50px); */
   transition: all 0.6s ease;
 }
 
@@ -1250,4 +1254,33 @@ img {
   .contact-info-box {
     padding: 25px;
   }
+}
+
+/*paque 1 */
+/* 1. Aseguramos que el contenedor tenga el color verde */
+.page-hero.page-hero--green {
+    background-color: #2a8515 !important;
+    background-image: none !important; /* IMPORTANTE: Esto quita cualquier foto de fondo que esté tapando el color */
+}
+
+/* 2. IMPORTANTE: Cambiamos la "cortina" (overlay) para que sea verde o transparente */
+.page-hero.page-hero--green .hero-overlay {
+    /* Opción A: Hacer el overlay transparente para ver el verde de fondo */
+    background: transparent !important; 
+    opacity: 1 !important;
+    
+    /* Opción B (Alternativa): Si prefieres pintar el overlay de verde directamente, usa esto en su lugar:
+    background-color: #2a8515 !important;
+    opacity: 0.9; 
+    */
+}
+
+
+/* Regla para crear columnas de 5 elementos (20% de ancho) */
+@media (min-width: 768px) {
+    .col-md-20 {
+        -ms-flex: 0 0 20%;
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
 }
