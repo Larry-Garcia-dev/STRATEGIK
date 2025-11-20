@@ -1,19 +1,38 @@
 <?php
+
+session_start();
+// Si no existe la variable de sesión, mandar al login
+if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
+    header("Location: login.php");
+    exit;
+}
+
 require_once 'php/config/db.php';
 $pdo = conectarDB();
+// ... resto de tu código ...
 $inmuebles = $pdo->query("SELECT * FROM inmuebles ORDER BY id DESC")->fetchAll();
 ?>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Gestión de Arriendos</h1>
+    <div class="d-flex align-items-center gap-3">
+        <span>Hola, <b><?= htmlspecialchars($_SESSION['admin_user']) ?></b></span>
+        <a href="logout.php" class="btn btn-outline-danger btn-sm">Cerrar Sesión</a>
+    </div>
+</div>
+
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Administrador de Arriendos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body class="p-4 bg-light">
     <div class="container">
-        <h1 class="mb-4">Gestión de Arriendos</h1>
-        
+
         <div class="card mb-5">
             <div class="card-header bg-primary text-white">Nuevo Inmueble</div>
             <div class="card-body">
@@ -42,7 +61,7 @@ $inmuebles = $pdo->query("SELECT * FROM inmuebles ORDER BY id DESC")->fetchAll()
                             <label>Área</label>
                             <input type="text" name="area" class="form-control" placeholder="Ej: 50 M2">
                         </div>
-                         <div class="col-md-3 mb-3">
+                        <div class="col-md-3 mb-3">
                             <label>Texto Canon</label>
                             <input type="text" name="canon" class="form-control" placeholder="Ej: $2.500.000+IVA">
                         </div>
@@ -77,19 +96,24 @@ $inmuebles = $pdo->query("SELECT * FROM inmuebles ORDER BY id DESC")->fetchAll()
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($inmuebles as $inm): ?>
-                <tr>
-                    <td><?= $inm['id'] ?></td>
-                    <td><?= $inm['codigo'] ?></td>
-                    <td><?= $inm['titulo'] ?></td>
-                    <td>$<?= number_format($inm['precio'], 0) ?></td>
-                    <td>
-                        <a href="acciones.php?accion=eliminar&id=<?= $inm['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Seguro?')">Eliminar</a>
-                    </td>
-                </tr>
+                <?php foreach ($inmuebles as $inm): ?>
+                    <tr>
+                        <td><?= $inm['id'] ?></td>
+                        <td><?= $inm['codigo'] ?></td>
+                        <td><?= $inm['titulo'] ?></td>
+                        <td>$<?= number_format($inm['precio'], 0) ?></td>
+
+                        <td>
+                            <a href="editar.php?id=<?= $inm['id'] ?>" class="btn btn-warning btn-sm me-2">
+                                Editar
+                            </a>
+                            <a href="acciones.php?accion=eliminar&id=<?= $inm['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Seguro?')">Eliminar</a>
+                        </td>
+                    </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
     </div>
 </body>
+
 </html>

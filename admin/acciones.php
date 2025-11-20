@@ -1,5 +1,10 @@
 <?php
 // admin/acciones.php
+session_start();
+if (!isset($_SESSION['admin_logged_in'])) {
+    header("Location: login.php");
+    exit;
+}
 require_once 'php/config/db.php';
 $pdo = conectarDB();
 
@@ -54,10 +59,35 @@ if ($accion == 'crear' || $accion == 'editar') {
 
 if ($accion == 'eliminar') {
     $id = $_GET['id'];
-    // Las imágenes se borran de la BD por el ON DELETE CASCADE, 
-    // pero idealmente deberías borrar los archivos físicos aquí también.
-    $stmt = $pdo->prepare("DELETE FROM inmuebles WHERE id = ?");
-    $stmt->execute([$id]);
-    header("Location: index.php?msg=eliminado");
+
+    try {
+        // 1. Obtener las rutas de las imágenes antes de borrar el registro
+        $stmtImgs = $pdo->prepare("SELECT ruta_imagen FROM imagenes_inmueble WHERE inmueble_id = ?");
+        $stmtImgs->execute([$id]);
+        $imagenes = $stmtImgs->fetchAll(PDO::FETCH_COLUMN);
+
+        // 2. Eliminar los archivos físicos del servidor
+        foreach ($imagenes as $rutaWeb) {
+            // Convertir ruta web (/uploads/imagen.jpg) a ruta de sistema de archivos (../uploads/imagen.jpg)
+            // Asumiendo que 'acciones.php' está en 'admin/' y las fotos en 'uploads/' (un nivel arriba)
+            
+            // Quitamos la barra inicial si existe para evitar doble slash
+            $rutaRelativa = ".." . $rutaWeb; 
+            
+            if (file_exists($rutaRelativa)) {
+                unlink($rutaRelativa); // Esta función borra el archivo
+            }
+        }
+
+        // 3. Eliminar el registro de la base de datos
+        // (Por la restricción ON DELETE CASCADE, esto borrará también las filas en la tabla 'imagenes_inmueble')
+        $stmt = $pdo->prepare("DELETE FROM inmuebles WHERE id = ?");
+        $stmt->execute([$id]);
+
+        header("Location: index.php?msg=eliminado_ok");
+    } catch (Exception $e) {
+        // Si algo falla, redirigir con error (opcional: guardar log)
+        header("Location: index.php?msg=error_eliminar");
+    }
 }
 ?>
