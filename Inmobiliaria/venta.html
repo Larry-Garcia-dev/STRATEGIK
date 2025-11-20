@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <a href="https://wa.me/573144262626" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
@@ -29,24 +29,19 @@
 
   <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="../index.html">
                 <img src="/img/Imagotipo_Negro.png" alt="Strategik Logo" class="logo">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                 <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="parque1.html">Parque 1</a></li>
                     <li class="nav-item"><a class="nav-link" href="parque2.html">Parque 2</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Inmobiliaria</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="venta.html">Venta</a></li>
-                            <li><a class="dropdown-item" href="arriendo.html">Arriendo</a></li>
-                        </ul>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="venta.html">Venta</a></li>
+                    <li class="nav-item"><a class="nav-link" href="arriendo.html">Arriendo</a></li>
                     <li class="nav-item"><a class="nav-link" href="quienes-somos.html">Quiénes Somos</a></li>
                     <li class="nav-item"><a class="nav-link" href="contacto.html">Contáctenos</a></li>
                 </ul>
@@ -66,7 +61,7 @@
         <div class="container">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+                    <li class="breadcrumb-item"><a href="../index.html">Inicio</a></li>
                     <li class="breadcrumb-item">Inmobiliaria</li>
                     <li class="breadcrumb-item active">Venta</li>
                 </ol>
@@ -153,55 +148,27 @@
         </div>
     </section>
 
-    <section class="properties-section py-5">
-        <div class="container">
-            <h2 class="section-title text-center mb-5 animate-on-scroll">Propiedades en Venta</h2>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="property-card animate-on-scroll">
-                        <div class="property-image">
-                            <img src="/placeholder.svg?height=300&width=400" alt="Bodega en Venta" class="img-fluid">
-                            <div class="property-badge">En Venta</div>
-                        </div>
-                        <div class="property-content">
-                            <h3 class="property-title">Bodega Industrial</h3>
-                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> Parque 1, Ibagué</p>
-                            <p class="property-area"><i class="fas fa-ruler-combined"></i> 2,500 m²</p>
-                            <a href="contacto.html" class="btn btn-primary w-100">Más Información</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="property-card animate-on-scroll">
-                        <div class="property-image">
-                            <img src="/placeholder.svg?height=300&width=400" alt="Lote Comercial" class="img-fluid">
-                            <div class="property-badge">En Venta</div>
-                        </div>
-                        <div class="property-content">
-                            <h3 class="property-title">Lote Comercial</h3>
-                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> Parque 2, Ibagué</p>
-                            <p class="property-area"><i class="fas fa-ruler-combined"></i> 5,000 m²</p>
-                            <a href="contacto.html" class="btn btn-primary w-100">Más Información</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="property-card animate-on-scroll">
-                        <div class="property-image">
-                            <img src="/placeholder.svg?height=300&width=400" alt="Centro Logístico" class="img-fluid">
-                            <div class="property-badge">En Venta</div>
-                        </div>
-                        <div class="property-content">
-                            <h3 class="property-title">Centro Logístico</h3>
-                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> Zona Industrial, Ibagué</p>
-                            <p class="property-area"><i class="fas fa-ruler-combined"></i> 8,000 m²</p>
-                            <a href="contacto.html" class="btn btn-primary w-100">Más Información</a>
+        <section class="properties-section py-5">
+            <div class="container">
+                <h2 class="section-title text-center mb-5 animate-on-scroll">Propiedades en Venta</h2>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="property-card animate-on-scroll">
+                            <div class="property-image">
+                                <img src="/placeholder.svg?height=300&width=400" alt="Bodega en Venta" class="img-fluid">
+                                <div class="property-badge">En Venta</div>
+                            </div>
+                            <div class="property-content">
+                                <h3 class="property-title">Bodega Industrial</h3>
+                                <p class="property-location"><i class="fas fa-map-marker-alt"></i> Parque 1, Ibagué</p>
+                                <p class="property-area"><i class="fas fa-ruler-combined"></i> 2,500 m²</p>
+                                <a href="contacto.html" class="btn btn-primary w-100">Más Información</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
     <section class="cta-section py-5 bg-light">
         <div class="container">
@@ -311,6 +278,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>

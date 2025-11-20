@@ -1258,24 +1258,24 @@ img {
 
 /*?==========================parque 1 ==========================?*/
 
-/* 1. Aseguramos que el contenedor tenga el color verde */
+/*?========================== PARQUE 1 (Con Imagen) ==========================?*/
+
+/* 1. Imagen de fondo para Parque 1 */
 .page-hero.page-hero--green {
-    background-color: #2a8515 !important;
-    background-image: none !important; /* IMPORTANTE: Esto quita cualquier foto de fondo que esté tapando el color */
+    /* AQUÍ CAMBIAS LA RUTA DE LA IMAGEN QUE QUIERAS USAR */
+    background-image: url('/img/banner_parque1.jpg') !important; 
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-color: #2a8515; /* Color de respaldo (verde) por si la imagen falla */
 }
 
-/* 2. IMPORTANTE: Cambiamos la "cortina" (overlay) para que sea verde o transparente */
+/* 2. Cortina oscura para que el texto blanco se lea bien */
 .page-hero.page-hero--green .hero-overlay {
-    /* Opción A: Hacer el overlay transparente para ver el verde de fondo */
-    background: transparent !important; 
+    /* El mismo degradado oscuro que usamos en Parque 2 */
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%) !important;
     opacity: 1 !important;
-    
-    /* Opción B (Alternativa): Si prefieres pintar el overlay de verde directamente, usa esto en su lugar:
-    background-color: #2a8515 !important;
-    opacity: 0.9; 
-    */
 }
-
 
 /* Regla para crear columnas de 5 elementos (20% de ancho) */
 @media (min-width: 768px) {
@@ -1288,23 +1288,20 @@ img {
 
 
 
-/*?==========================parque 2 ==========================?*/
-/*paque 1 */
-/* 1. Aseguramos que el contenedor tenga el color verde */
+/*?========================== PARQUE 2 (Con Imagen) ==========================?*/
+
+/* 1. Ponemos la imagen de fondo y aseguramos que cubra todo */
 .page-hero.page-hero--parque2 {
-    background-color: #f38d07 !important;
-    background-image: none !important; /* IMPORTANTE: Esto quita cualquier foto de fondo que esté tapando el color */
+    background-image: url('/img/banner_parque2.jpg') !important; /* Ruta de tu imagen */
+    background-size: cover !important;    /* Asegura que la imagen cubra todo el espacio */
+    background-position: center !important; /* Centra la imagen */
+    background-repeat: no-repeat !important;
+    background-color: #f38d07; /* Color de respaldo por si la imagen falla */
 }
 
-/* 2. IMPORTANTE: Cambiamos la "cortina" (overlay) para que sea verde o transparente */
+/* 2. Ajustamos la "cortina" (Overlay) para que el texto se lea bien sobre la foto */
 .page-hero.page-hero--parque2 .hero-overlay {
-    /* Opción A: Hacer el overlay transparente para ver el verde de fondo */
-    background: transparent !important; 
+    /* Usamos un negro semitransparente para que el texto blanco resalte */
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%) !important;
     opacity: 1 !important;
-    
-    /* Opción B (Alternativa): Si prefieres pintar el overlay de verde directamente, usa esto en su lugar:
-    background-color: #2a8515 !important;
-    opacity: 0.9; 
-    */
 }
-/*?========================== fin parque 2 ==========================?*/
