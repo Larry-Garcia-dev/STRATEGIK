@@ -34,7 +34,7 @@ async function cargarInmuebles() {
             const precioNum = parseFloat(inm.precio);
             const precioF = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 }).format(precioNum);
             
-            let imagen = inm.imagen_principal ? inm.imagen_principal : '/placeholder.svg';
+            let imagen = inm.imagen_principal ? inm.imagen_principal : '../img/home.webp';
             if (!imagen.startsWith('http') && !imagen.startsWith('/')) imagen = '../' + imagen;
 
             const card = `
@@ -86,7 +86,7 @@ async function verDetalle(id) {
         document.getElementById('modalCodigo').innerText = 'Cód: ' + (data.codigo || 'N/A');
 
         // ---------------------------------------------------------
-        // CONFIGURACIÓN BOTÓN WHATSAPP
+        // diria yo que se podria hacer mejor, pero funciona y si funciona no lo toques
         // ---------------------------------------------------------
         const btnWhatsapp = document.getElementById('btnWhatsapp');
         if (btnWhatsapp) {
@@ -136,3 +136,4 @@ Quedo atento a su respuesta. Gracias.`;
         alert("No se pudo cargar el detalle del inmueble.");
     }
 }
+
