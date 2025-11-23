@@ -7,8 +7,10 @@ try {
     // DATOS DE TU USUARIO (CÁMBIALOS SI QUIERES)
     $usuario = 'admin';
     $password = 'strategikaS12XC'; // Contraseña que usarás para entrar
-    
-    // Encriptamos la contraseña
+
+
+
+// Encriptamos la contraseña
     $password_hash = password_hash($password, PASSWORD_DEFAULT);
     
     $sql = "INSERT INTO usuarios_admin (usuario, password) VALUES (?, ?)";

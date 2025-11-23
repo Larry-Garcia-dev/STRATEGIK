@@ -9,7 +9,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 
 require_once 'php/config/db.php';
 $pdo = conectarDB();
-// ... resto de tu código ...
+
 $inmuebles = $pdo->query("SELECT * FROM inmuebles ORDER BY id DESC")->fetchAll();
 ?>
 <div class="d-flex justify-content-between align-items-center mb-4">

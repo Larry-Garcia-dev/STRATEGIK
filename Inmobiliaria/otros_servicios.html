@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otros Servicios - Strategik Inmobiliaria</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Quicksand:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        /* Estilos específicos para esta vista */
+        .parking-card {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .parking-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(245, 126, 18, 0.15);
+        }
+
+        .parking-header {
+            background: var(--secondary-color);
+            /* Negro */
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .parking-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 4px;
+            background: var(--primary-color);
+            /* Naranja Strategik */
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            height: 100%;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .stat-box:hover {
+            border-color: var(--primary-color);
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #333;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Ajuste para las imágenes de proyectos */
+        .project-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-parking-img {
+            height: 350px;
+            object-fit: cover;
+        }
+
+        .parking-value {
+            font-size: 1.8rem;
+            /* Tamaño grande */
+            font-weight: 900;
+            /* Negrita fuerte */
+            color: #333;
+            /* Color oscuro */
+        }
+    </style>
+</head>
+
+<body>
+    <a href="https://wa.me/573144262626" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header class="header-top">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="contact-info">
+                        <a href="tel:+573144262626"><i class="fas fa-phone"></i> +57 3144262626</a>
+                        <a href="mailto:comercial@strategik.com.co"><i class="fas fa-envelope"></i>
+                            comercial@strategik.com.co</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../img/Imagotipo_Negro.png" alt="Strategik Logo" class="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="parque1.html">Parque 1</a></li>
+                    <li class="nav-item"><a class="nav-link" href="parque2.html">Parque 2</a></li>
+                    <li class="nav-item"><a class="nav-link" href="venta.html">Venta</a></li>
+                    <li class="nav-item"><a class="nav-link" href="arriendo.html">Arriendo</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="">Otros Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="quienes-somos.html">Quiénes Somos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contáctenos</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- <section class="page-hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="hero-title animate-fade-in">OTROS SERVICIOS</h1>
+            <p class="hero-subtitle animate-fade-in-delay">Parqueaderos, Diseño y Construcción</p>
+        </div>
+    </section> -->
+
+    <!-- <section class="breadcrumb-section py-3">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../index.html">Inicio</a></li>
+                    <li class="breadcrumb-item active">Inmobiliaria/Otros Servicios</li>
+                </ol>
+            </nav>
+        </div>
+    </section> -->
+
+    <!-- =========================================
+       SECCIÓN 1: PARQUEADEROS (DISEÑO ZIG-ZAG MEJORADO)
+    ========================================== -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5 animate-on-scroll">
+                <h2 class="section-title">RED DE PARQUEADEROS</h2>
+                <p class="section-text">Soluciones de estacionamiento seguras y monitoreadas</p>
+            </div>
+
+            <div class="row align-items-center mb-5 animate-on-scroll shadow-sm rounded overflow-hidden border bg-white">
+                
+                <div class="col-lg-6 p-4 p-lg-5">
+                    <div class="parking-header text-start bg-transparent p-0 mb-4 text-dark">
+                        <h3 class="fw-bold text-primary">PARQUEADERO EL BOGA 1</h3>
+                        <div class="mt-2"><span class="badge bg-warning text-dark fs-6">PARQUEADERO CUBIERTO</span></div>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="stat-box h-100 d-flex flex-column justify-content-center">
+                                <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                                <div class="parking-value">24/7</div>
+                                <div class="stat-label">Servicio</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-box h-100 d-flex flex-column justify-content-center">
+                                <div class="stat-icon"><i class="fas fa-video"></i></div>
+                                <div class="stat-label fw-bold mt-2">VIGILANCIA Y MONITOREO</div>
+                                <div class="parking-value">24/7</div>
+
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-box h-100 d-flex flex-column justify-content-center">
+                                <div class="stat-icon"><i class="fas fa-car"></i></div>
+                                <div class="parking-value">375</div>
+                                <div class="stat-label">Cupos Vehículos</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-box h-100 d-flex flex-column justify-content-center">
+                                <div class="stat-icon"><i class="fas fa-motorcycle"></i></div>
+                                <div class="parking-value">100</div>
+                                <div class="stat-label">Cupos Motos</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 p-0">
+                    <div id="carouselBoga1" class="carousel slide h-100" data-bs-ride="carousel">
+                        <div class="carousel-inner h-100">
+                            <div class="carousel-item active h-100">
+                                <img src="../img/parqueos/boga1.1.png" class="d-block w-100 h-100" style="object-fit: cover; min-height: 400px;" alt="Boga 1 Foto 1">
+                            </div>
+                            <div class="carousel-item h-100">
+                                <img src="../img/parqueos/boga1.png" class="d-block w-100 h-100" style="object-fit: cover; min-height: 400px;" alt="Boga 1 Foto 2">
+                            </div>
+                              <div class="carousel-item h-100">
+                                <img src="../img/parqueos/boga1.2.png " class="d-block w-100 h-100" style="object-fit: cover; min-height: 400px;" alt="Boga 1 Foto 2">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselBoga1" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselBoga1" data-bs-slide="next">
+                            <span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row align-items-center mb-5 animate-on-scroll shadow-sm rounded overflow-hidden border bg-white">
+                
+                <div class="col-lg-6 p-0 order-lg-1">
+                    <div id="carouselBoga2" class="carousel slide h-100" data-bs-ride="carousel">
+                        <div class="carousel-inner h-100">
+                            <div class="carousel-item active h-100">
+                                <img src="../img/parqueos/boga2.2.png" class="d-block w-100 h-100" style="object-fit: cover; min-height: 400px;" alt="Boga 2 Foto 1">
+                            </div>
+                            <div class="carousel-item h-100">
+                                <img src="../img/parqueos/boga2.1.png" class="d-block w-100 h-100" style="object-fit: cover; min-height: 400px;" alt="Boga 2 Foto 2">
+                            </div>
+                            <div class="carousel-item h-100">
+                                <img src="../img/parqueos/boga2.png" class="d-block w-100 h-100" style="object-fit: cover; min-height: 400px;" alt="Boga 2 Foto 2">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselBoga2" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselBoga2" data-bs-slide="next">
+                            <span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 p-4 p-lg-5 order-lg-2">
+                    <div class="parking-header text-start bg-transparent p-0 mb-4 text-dark">
+                        <h3 class="fw-bold text-primary">PARQUEADERO EL BOGA 2</h3>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="stat-box h-100 d-flex flex-column justify-content-center">
+                                <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                                <div class="parking-value">24/7</div>
+                                <div class="stat-label">Servicio</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-box h-100 d-flex flex-column justify-content-center">
+                                <div class="stat-icon"><i class="fas fa-video"></i></div>
+                                <div class="stat-label fw-bold mt-2">VIGILANCIA Y MONITOREO</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-box h-100 d-flex flex-column justify-content-center">
+                                <div class="stat-icon"><i class="fas fa-car"></i></div>
+                                <div class="parking-value">100</div>
+                                <div class="stat-label">Cupos Vehículos</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-box h-100 d-flex flex-column justify-content-center">
+                                <div class="stat-icon"><i class="fas fa-motorcycle"></i></div>
+                                <div class="parking-value">30</div>
+                                <div class="stat-label">Cupos Motos</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 mb-5 animate-on-scroll text-center">
+                    <h2 class="section-title mb-4">Diseños, Gerencia, Interventoría y Construcción</h2>
+                    <p class="lead text-primary fw-bold">Apasionados por la Industria Logística</p>
+                </div>
+
+                <div class="col-lg-6 animate-on-scroll">
+                    <p class="section-text">Contamos con Profesionales y personal de amplia experiencia en el Área de
+                        construcción, Diseños, Gerencia, interventoría y comercialización de proyectos.</p>
+                    <p class="section-text">Nuestro valor agregado es brindar una atención personalizada, de calidad,
+                        ajustándose a un óptimo presupuesto y la correcta ejecución de cada proyecto en tiempo y forma.
+                    </p>
+                </div>
+
+                <div class="col-lg-6 animate-on-scroll">
+                    <div class="p-4 bg-white rounded shadow-sm border-start border-5 border-warning">
+                        <h3 class="h4 mb-3 text-dark">Nuestros Valores</h3>
+                        <p class="section-text small mb-2"><strong>El Compromiso y la Responsabilidad</strong> son
+                            valores clave en nuestra empresa. Es de suma importancia para nosotros una atención
+                            personalizada a cada proyecto para obtener el mejor resultado.</p>
+                        <p class="section-text small mb-2"><strong>La honradez</strong> a nivel personal y profesional,
+                            desarrollada internamente y en la relación con los clientes, que se traduce en un trabajo
+                            transparente.</p>
+                        <p class="section-text small mb-0">El buen ambiente laboral, así como el trabajo en equipo nos
+                            da una ventaja competitiva.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5 animate-on-scroll">Nuestra Experiencia</h2>
+
+            <div class="row align-items-center mb-5 animate-on-scroll">
+                <div class="col-lg-6 order-lg-1 mb-4 mb-lg-0">
+                    <h3 class="text-primary fw-bold">CEDI PROANDINA</h3>
+                    <h5 class="text-muted mb-3">Diseño, Gerencia, Supervisión y Construcción</h5>
+                    <p class="section-text">La Parcela 5A cuenta con un área de <strong>8.838,30 M2</strong> y un área
+                        construida de <strong>5.572,60 M2</strong>.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Valor: $5.000.000.000 Cop
+                            (IVA incluido)</li>
+                        <li class="mb-2"><i class="fas fa-clock text-primary me-2"></i> Ejecución: 305 días</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 order-lg-2">
+                    <img src="../img/anoters/1.jpg" alt="CEDI Proandina" class="project-img">
+                </div>
+            </div>
+
+            <hr class="my-5">
+
+            <div class="row align-items-center mb-5 animate-on-scroll">
+                <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0 ps-lg-5">
+                    <h3 class="text-primary fw-bold">OFICINAS PROANDINA</h3>
+                    <h5 class="text-muted mb-3">Diseño, Gerencia, Supervisión y Construcción</h5>
+                    <p class="section-text">La Parcela 3A cuenta con un área de <strong>4.532,39 M2</strong> y un área
+                        construida de <strong>1058,37 M2</strong>.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Valor: $3.000.000.000 Cop
+                            (IVA incluido)</li>
+                        <li class="mb-2"><i class="fas fa-clock text-primary me-2"></i> Ejecución: 240 días</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <img src="../img/anoters/2.jpg" alt="Oficinas Proandina" class="project-img">
+                </div>
+            </div>
+
+            <hr class="my-5">
+
+            <div class="row align-items-center mb-5 animate-on-scroll">
+                <div class="col-lg-6 order-lg-1 mb-4 mb-lg-0">
+                    <h3 class="text-primary fw-bold">COLANTA</h3>
+                    <h5 class="text-muted mb-3">Diseño, Gerencia, Supervisión y Construcción</h5>
+                    <p class="section-text">La Parcela 5A cuenta con un área de <strong>2.303,40 M2</strong> y un área
+                        construida de <strong>2.134,58 M2</strong>.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Valor: $2.110.090.000 Cop
+                            (IVA incluido)</li>
+                        <li class="mb-2"><i class="fas fa-clock text-primary me-2"></i> Ejecución: 305 días</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 order-lg-2">
+                    <img src="../img/anoters/3.jpg" alt="Colanta" class="project-img">
+                </div>
+            </div>
+
+            <div class="row mt-5 pt-4">
+                <div class="col-12 text-center mb-5 animate-on-scroll">
+                    <h2 class="section-title">INFRAESTRUCTURA Y URBANISMO</h2>
+                </div>
+
+                <div class="col-md-6 mb-4 animate-on-scroll">
+                    <div class="card h-100 shadow-sm border-0">
+                        <img src="../img/anoters/4.jpg" class="card-img-top" alt="Portería"
+                            style="height: 250px; object-fit: cover;">
+                        <div class="card-body">
+                            <h4 class="card-title fw-bold">PORTERÍA</h4>
+                            <p class="card-text small">Cuenta con un área de 290,93 M2 y un área construida de 150,29
+                                M2. Valor: $336.000.000 Cop. Ejecución: 120 días.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-4 animate-on-scroll">
+                    <div class="card h-100 shadow-sm border-0">
+                        <img src="../img/anoters/5.jpg" class="card-img-top" alt="Vías y Andenes"
+                            style="height: 250px; object-fit: cover;">
+                        <div class="card-body">
+                            <h4 class="card-title fw-bold">VÍAS Y ANDENES (GENERAL)</h4>
+                            <p class="card-text small">Construcción de aprox. 16.400 m2 de vía asfaltada para tráfico
+                                pesado y 3.476 m2 de andenes peatonales con loseta prefabricada.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-4 animate-on-scroll">
+                    <div class="card h-100 shadow-sm border-0">
+                        <img src="../img/anoters/6.jpg" class="card-img-top" alt="Vías Strategik 2"
+                            style="height: 250px; object-fit: cover;">
+                        <div class="card-body">
+                            <h4 class="card-title fw-bold">VÍAS Y ANDENES STRATEGIK 2</h4>
+                            <p class="card-text small">208 m2 de andenes peatonales, 321 m2 de andenes vehiculares en
+                                concreto MR 43 y 1601 m2 de vía para tráfico pesado.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-4 animate-on-scroll">
+                    <div class="card h-100 shadow-sm border-0">
+                        <img src="../img/anoters/7.jpg" class="card-img-top" alt="Obras Hidráulicas"
+                            style="height: 250px; object-fit: cover;">
+                        <div class="card-body">
+                            <h4 class="card-title fw-bold">OBRAS HIDRÁULICAS Y ELÉCTRICAS</h4>
+                            <ul class="small list-unstyled">
+                                <li class="mb-2"><strong>Box Culverts:</strong> 2 unidades (26m y 16m) para manejo de
+                                    fuentes hídricas.</li>
+                                <li class="mb-2"><strong>Subestación Eléctrica:</strong> 50 m2 para albergar equipos de
+                                    red.</li>
+                                <li><strong>PTARD:</strong> Plantas de tratamiento de aguas residuales domésticas para
+                                    Strategik 1 y 2.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <img src="../img/Logo_Degradado_Blanco.png" alt="Strategik Logo" class="footer-logo mb-3"
+                        style="max-width: 200px;">
+                    <p class="footer-text">Nuestros parques están desarrollados con una infraestructura ideal para las
+                        empresas de carácter logístico de impacto regional y nacional.</p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h4 class="footer-title">Site Map</h4>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="parque1.html">Parque 1</a></li>
+                        <li><a href="parque2.html">Parque 2</a></li>
+                        <li><a href="venta.html">Inmobiliaria</a></li>
+                        <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+                        <li><a href="contacto.html">Contáctenos</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h4 class="footer-title">Información</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-phone"></i> +57 3144262626</li>
+                        <li><i class="fas fa-envelope"></i> comercial@strategik.com.co</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Ibagué - Tolima</li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h4 class="footer-title">Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="footer-copyright">All Copyright © 2025 STRATEGIK</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/script.js"></script>
+</body>
+
+</html>
