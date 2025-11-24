@@ -26,7 +26,7 @@ async function cargarInmuebles() {
         container.innerHTML = ''; 
 
         if (data.length === 0) {
-            container.innerHTML = '<div class="col-12 text-center py-5"><h3>No hay inmuebles disponibles.</h3></div>';
+            container.innerHTML = '<div class="col-12 text-center py-5"><h3>No hay inmuebles registrados.</h3></div>';
             return;
         }
 
@@ -34,25 +34,55 @@ async function cargarInmuebles() {
             const precioNum = parseFloat(inm.precio);
             const precioF = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 }).format(precioNum);
             
+            // Manejo de imagen
             let imagen = inm.imagen_principal ? inm.imagen_principal : '../img/home.webp';
             if (!imagen.startsWith('http') && !imagen.startsWith('/')) imagen = '../' + imagen;
 
+            // --- LÓGICA NUEVA PARA ETIQUETAS ---
+            
+            // 1. Color según Arriendo o Venta
+            let colorBadge = '#0d6efd'; // Azul por defecto (Arriendo)
+            if (inm.tipo_oferta === 'Venta') {
+                colorBadge = '#f38d07'; // Naranja (Venta)
+            }
+
+            // 2. Etiqueta de Disponibilidad
+            let htmlEstado = '';
+            if (inm.estado === 'No Disponible') {
+                htmlEstado = `<div class="position-absolute top-0 start-0 m-3 badge bg-danger shadow-sm">NO DISPONIBLE</div>`;
+            } else {
+                htmlEstado = `<div class="position-absolute top-0 start-0 m-3 badge bg-success shadow-sm">DISPONIBLE</div>`;
+            }
+
             const card = `
             <div class="col-lg-4 col-md-6 mb-4">
-                <div class="property-card h-100 shadow-sm">
-                    <div class="property-image position-relative">
-                        <img src="${imagen}" alt="${inm.titulo}" class="img-fluid w-100" style="height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x300?text=Sin+Imagen'">
-                        <div class="property-badge rent position-absolute top-0 end-0 m-3 badge" style="background-color:#f38d07;" >Venta</div>
-                    </div>
-                    <div class="property-content p-4">
-                        <h3 class="property-title h5 fw-bold mb-2 text-dark">${inm.titulo}</h3>
-                        <p class="property-location text-muted mb-1"><i class="fas fa-map-marker-alt me-2 text-primary"></i> ${inm.ubicacion}</p>
-                        <p class="property-area text-muted mb-3"><i class="fas fa-ruler-combined me-2 text-primary"></i> ${inm.area}</p>
-                        <p class="text-primary fw-bold fs-5 mb-3">${precioF}</p>
-                        <p class="small text-muted mb-4">${inm.descripcion_corta ? inm.descripcion_corta.substring(0, 90) + '...' : ''}</p>
+                <div class="property-card h-100 shadow-sm border-0">
+                    <div class="property-image position-relative overflow-hidden">
+                        <img src="${imagen}" alt="${inm.titulo}" class="img-fluid w-100" style="height: 250px; object-fit: cover; transition: transform 0.3s;" onerror="this.src='https://via.placeholder.com/400x300?text=Sin+Imagen'">
                         
-                        <button onclick="verDetalle(${inm.id})" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#detalleModal">
-                            Más Información
+                        <div class="property-badge position-absolute top-0 end-0 m-3 badge shadow-sm" style="background-color:${colorBadge}; font-size: 0.9rem;">
+                            ${inm.tipo_oferta}
+                        </div>
+
+                        ${htmlEstado}
+                    </div>
+
+                    <div class="property-content p-4 bg-white">
+                        <h3 class="property-title h5 fw-bold mb-2 text-dark text-truncate">${inm.titulo}</h3>
+                        <p class="property-location text-muted mb-1 small"><i class="fas fa-map-marker-alt me-2 text-primary"></i> ${inm.ubicacion}</p>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <small class="text-muted"><i class="fas fa-ruler-combined me-1 text-primary"></i> ${inm.area}</small>
+                            <small class="text-muted">Ref: ${inm.codigo}</small>
+                        </div>
+                        
+                        <p class="text-primary fw-bold fs-5 mb-3">${precioF}</p>
+                        
+                        <p class="small text-muted mb-4" style="min-height: 40px;">
+                            ${inm.descripcion_corta ? inm.descripcion_corta.substring(0, 90) + '...' : ''}
+                        </p>
+                        
+                        <button onclick="verDetalle(${inm.id})" class="btn btn-outline-primary w-100 rounded-pill" data-bs-toggle="modal" data-bs-target="#detalleModal">
+                            Ver Detalles
                         </button>
                     </div>
                 </div>
@@ -62,7 +92,7 @@ async function cargarInmuebles() {
 
     } catch (error) {
         console.error(error);
-        container.innerHTML = `<div class="col-12 text-center text-danger py-5">Error: ${error.message}</div>`;
+        container.innerHTML = `<div class="col-12 text-center text-danger py-5">Error cargando inmuebles: ${error.message}</div>`;
     }
 }
 
@@ -77,8 +107,10 @@ async function verDetalle(id) {
         document.getElementById('modalTitulo').innerText = data.titulo;
         
         const precioF = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 }).format(data.precio);
-        // Usamos el texto del canon si existe, sino el precio formateado
         const precioMostrar = data.canon_texto ? data.canon_texto : precioF;
+        
+        // Puedes agregar lógica aquí si tienes elementos en el modal para mostrar "Estado"
+        // Ej: document.getElementById('modalEstado').innerText = data.estado;
         
         document.getElementById('modalPrecio').innerText = precioMostrar;
         document.getElementById('modalDescripcion').innerText = data.descripcion_larga || "Sin descripción detallada.";
@@ -86,23 +118,25 @@ async function verDetalle(id) {
         document.getElementById('modalCodigo').innerText = 'Cód: ' + (data.codigo || 'N/A');
 
         // ---------------------------------------------------------
-        // diria yo que se podria hacer mejor, pero funciona y si funciona no lo toques
+        // WHATSAPP DINÁMICO
         // ---------------------------------------------------------
         const btnWhatsapp = document.getElementById('btnWhatsapp');
         if (btnWhatsapp) {
-            const telefono = "573144262626"; 
+            const telefono = "573144262626"; // TU NUMERO AQUÍ
             
-            const mensaje = `Hola, me gustaría recibir más información sobre este inmueble:
+            // Personalizamos el mensaje dependiendo si es Venta o Arriendo
+            const accion = data.tipo_oferta === 'Venta' ? 'comprar' : 'arrendar';
+            
+            const mensaje = `Hola, estoy interesado en ${accion} el siguiente inmueble:
 *Inmueble:* ${data.titulo}
+*Operación:* ${data.tipo_oferta}
 *Código:* ${data.codigo || 'N/A'}
 *Ubicación:* ${data.ubicacion}
 *Precio:* ${document.getElementById('modalPrecio').innerText}
 
-Quedo atento a su respuesta. Gracias.`;
+¿Está disponible actualmente? Quedo atento.`;
 
-            // Usamos api.whatsapp.com que fuerza mejor la apertura de la app
             const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(mensaje)}`;
-            
             btnWhatsapp.href = url;
         }
 
@@ -118,7 +152,7 @@ Quedo atento a su respuesta. Gracias.`;
 
                 carouselInner.innerHTML += `
                 <div class="carousel-item ${activeClass}">
-                    <img src="${rutaImg}" class="d-block w-100" style="height: 400px; object-fit: contain; background-color: #f0f0f0;" onerror="this.src='https://via.placeholder.com/800x400?text=Error+Imagen'">
+                    <img src="${rutaImg}" class="d-block w-100" style="height: 400px; object-fit: contain; background-color: #f8f9fa;" onerror="this.src='https://via.placeholder.com/800x400?text=Error+Imagen'">
                 </div>`;
             });
         } else {
@@ -127,7 +161,7 @@ Quedo atento a su respuesta. Gracias.`;
 
             carouselInner.innerHTML = `
              <div class="carousel-item active">
-                <img src="${imgP}" class="d-block w-100" style="height: 400px; object-fit: contain; background-color: #f0f0f0;">
+                <img src="${imgP}" class="d-block w-100" style="height: 400px; object-fit: contain; background-color: #f8f9fa;">
              </div>`;
         }
 
@@ -136,4 +170,3 @@ Quedo atento a su respuesta. Gracias.`;
         alert("No se pudo cargar el detalle del inmueble.");
     }
 }
-

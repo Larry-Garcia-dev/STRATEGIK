@@ -11,6 +11,7 @@ $pdo = conectarDB();
 $accion = $_POST['accion'] ?? $_GET['accion'] ?? '';
 
 if ($accion == 'crear' || $accion == 'editar') {
+    // 1. Recibimos todos los datos, incluidos los nuevos campos
     $titulo = $_POST['titulo'];
     $codigo = $_POST['codigo'];
     $precio = $_POST['precio'];
@@ -19,33 +20,36 @@ if ($accion == 'crear' || $accion == 'editar') {
     $canon = $_POST['canon'];
     $desc_corta = $_POST['desc_corta'];
     $desc_larga = $_POST['desc_larga'];
-    $estado = 'Disponible';
+    
+    // CAMPOS NUEVOS
+    $tipo_oferta = $_POST['tipo_oferta']; // Venta o Arriendo
+    $estado = $_POST['estado'];           // Disponible o No Disponible
     
     if ($accion == 'crear') {
-        $sql = "INSERT INTO inmuebles (codigo, titulo, precio, descripcion_corta, descripcion_larga, ubicacion, area, canon_texto, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        // 2. Modificamos el INSERT para incluir tipo_oferta y el estado dinámico
+        $sql = "INSERT INTO inmuebles (codigo, titulo, precio, descripcion_corta, descripcion_larga, ubicacion, area, canon_texto, tipo_oferta, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$codigo, $titulo, $precio, $desc_corta, $desc_larga, $ubicacion, $area, $canon, $estado]);
+        $stmt->execute([$codigo, $titulo, $precio, $desc_corta, $desc_larga, $ubicacion, $area, $canon, $tipo_oferta, $estado]);
         $inmueble_id = $pdo->lastInsertId();
     } else {
+        // 3. Modificamos el UPDATE para actualizar también tipo_oferta y estado
         $id = $_POST['id'];
-        $sql = "UPDATE inmuebles SET codigo=?, titulo=?, precio=?, descripcion_corta=?, descripcion_larga=?, ubicacion=?, area=?, canon_texto=? WHERE id=?";
+        $sql = "UPDATE inmuebles SET codigo=?, titulo=?, precio=?, descripcion_corta=?, descripcion_larga=?, ubicacion=?, area=?, canon_texto=?, tipo_oferta=?, estado=? WHERE id=?";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$codigo, $titulo, $precio, $desc_corta, $desc_larga, $ubicacion, $area, $canon, $id]);
+        $stmt->execute([$codigo, $titulo, $precio, $desc_corta, $desc_larga, $ubicacion, $area, $canon, $tipo_oferta, $estado, $id]);
         $inmueble_id = $id;
     }
 
-    // Manejo de Imágenes (Máximo 10)
+    // Manejo de Imágenes (Máximo 10) - (Esto queda igual)
     if (!empty($_FILES['imagenes']['name'][0])) {
         $total = count($_FILES['imagenes']['name']);
-        // Verificar límite de 10 se hace en el front o contando en DB, aquí procesamos las que llegan
         for ($i = 0; $i < $total; $i++) {
-            if ($i >= 10) break; // Seguridad extra
+            if ($i >= 10) break; 
             
             $tmpFilePath = $_FILES['imagenes']['tmp_name'][$i];
             if ($tmpFilePath != "") {
                 $newFilePath = "../uploads/" . uniqid() . "_" . $_FILES['imagenes']['name'][$i];
                 if (move_uploaded_file($tmpFilePath, $newFilePath)) {
-                    // Guardar ruta relativa en BD para que sea accesible desde web
                     $webPath = "/uploads/" . basename($newFilePath);
                     $stmtImg = $pdo->prepare("INSERT INTO imagenes_inmueble (inmueble_id, ruta_imagen) VALUES (?, ?)");
                     $stmtImg->execute([$inmueble_id, $webPath]);
@@ -68,25 +72,20 @@ if ($accion == 'eliminar') {
 
         // 2. Eliminar los archivos físicos del servidor
         foreach ($imagenes as $rutaWeb) {
-            // Convertir ruta web (/uploads/imagen.jpg) a ruta de sistema de archivos (../uploads/imagen.jpg)
             // Asumiendo que 'acciones.php' está en 'admin/' y las fotos en 'uploads/' (un nivel arriba)
-            
-            // Quitamos la barra inicial si existe para evitar doble slash
             $rutaRelativa = ".." . $rutaWeb; 
             
             if (file_exists($rutaRelativa)) {
-                unlink($rutaRelativa); // Esta función borra el archivo
+                unlink($rutaRelativa); 
             }
         }
 
         // 3. Eliminar el registro de la base de datos
-        // (Por la restricción ON DELETE CASCADE, esto borrará también las filas en la tabla 'imagenes_inmueble')
         $stmt = $pdo->prepare("DELETE FROM inmuebles WHERE id = ?");
         $stmt->execute([$id]);
 
         header("Location: index.php?msg=eliminado_ok");
     } catch (Exception $e) {
-        // Si algo falla, redirigir con error (opcional: guardar log)
         header("Location: index.php?msg=error_eliminar");
     }
 }

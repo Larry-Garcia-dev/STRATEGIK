@@ -1,7 +1,7 @@
 <?php
 // api/arriendos.php
 header('Content-Type: application/json');
-// Desactiva mostrar errores en pantalla para no romper el JSON
+header("Access-Control-Allow-Origin: *"); // Opcional: Para evitar problemas de CORS si pruebas local
 ini_set('display_errors', 0);
 error_reporting(E_ALL);
 
@@ -10,7 +10,7 @@ require_once '../admin/php/config/db.php';
 try {
     $pdo = conectarDB();
 
-    // CASO 1: Detalle de un inmueble (cuando das clic en "Más información")
+    // CASO 1: Detalle de un inmueble (ID específico)
     if (isset($_GET['id'])) {
         $id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
         
@@ -35,8 +35,9 @@ try {
 
         echo json_encode($inmueble);
     } 
-    // CASO 2: Listado de todos (para las tarjetas)
+    // CASO 2: Listado de todos (Tarjetas)
     else {
+        // Ordenamos por ID descendente para ver los nuevos primero
         $inmuebles = $pdo->query("SELECT * FROM inmuebles ORDER BY id DESC")->fetchAll(PDO::FETCH_ASSOC);
         
         foreach ($inmuebles as &$inm) {
