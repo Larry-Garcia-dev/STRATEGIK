@@ -68,6 +68,23 @@ $imagenes = $stmtImg->fetchAll(PDO::FETCH_ASSOC);
 
                     <div class="row">
                         <div class="col-md-6 mb-3">
+                            <label class="form-label">Tipo de Operación</label>
+                            <select name="tipo_oferta" class="form-select" required>
+                                <option value="Arriendo" <?= $inmueble['tipo_oferta'] == 'Arriendo' ? 'selected' : '' ?>>Arriendo</option>
+                                <option value="Venta" <?= $inmueble['tipo_oferta'] == 'Venta' ? 'selected' : '' ?>>Venta</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Disponibilidad</label>
+                            <select name="estado" class="form-select" required>
+                                <option value="Disponible" <?= $inmueble['estado'] == 'Disponible' ? 'selected' : '' ?>>Disponible</option>
+                                <option value="No Disponible" <?= $inmueble['estado'] == 'No Disponible' ? 'selected' : '' ?>>No Disponible</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
                             <label class="form-label">Ubicación</label>
                             <input type="text" name="ubicacion" class="form-control" value="<?= htmlspecialchars($inmueble['ubicacion']) ?>">
                         </div>
@@ -98,7 +115,7 @@ $imagenes = $stmtImg->fetchAll(PDO::FETCH_ASSOC);
                                 <?php foreach($imagenes as $img): ?>
                                     <div class="position-relative" style="width: 100px;">
                                         <img src="<?= htmlspecialchars($img['ruta_imagen']) ?>" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: cover;">
-                                        </div>
+                                    </div>
                                 <?php endforeach; ?>
                             <?php else: ?>
                                 <span class="text-muted">Sin imágenes.</span>
