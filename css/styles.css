@@ -1367,3 +1367,57 @@ img {
         min-height: 100%; 
     }
 }
+
+.section-text {
+    text-align: justify;
+}
+
+
+/* 1. Ponemos la imagen de fondo y aseguramos que cubra todo */
+.page-hero.page-hero--parque3 {
+    background-image: url('/img/anothers.jpg') !important; /* Ruta de tu imagen */
+    background-size: cover !important;    /* Asegura que la imagen cubra todo el espacio */
+    background-position: center !important; /* Centra la imagen */
+    background-repeat: no-repeat !important;
+    background-color: #f38d07; /* Color de respaldo por si la imagen falla */
+}
+
+/* 2. Ajustamos la "cortina" (Overlay) para que el texto se lea bien sobre la foto */
+.page-hero.page-hero--parque3 .hero-overlay {
+    /* Usamos un negro semitransparente para que el texto blanco resalte */
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%) !important;
+    opacity: 1 !important;
+}
+
+
+/* 1. Ponemos la imagen de fondo y aseguramos que cubra todo */
+.page-hero.page-hero--parque4 {
+    background-image: url('/img/carousel/contacto.jpg') !important; /* Ruta de tu imagen */
+    background-size: cover !important;    /* Asegura que la imagen cubra todo el espacio */
+    background-position: center !important; /* Centra la imagen */
+    background-repeat: no-repeat !important;
+    background-color: #f38d07; /* Color de respaldo por si la imagen falla */
+}
+
+/* 2. Ajustamos la "cortina" (Overlay) para que el texto se lea bien sobre la foto */
+.page-hero.page-hero--parque4 .hero-overlay {
+    /* Usamos un negro semitransparente para que el texto blanco resalte */
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%) !important;
+    opacity: 1 !important;
+}
+
+/* 1. Ponemos la imagen de fondo y aseguramos que cubra todo */
+.page-hero.page-hero--parque5 {
+    background-image: url('/img/parqueos/boga2.3.png') !important; /* Ruta de tu imagen */
+    background-size: cover !important;    /* Asegura que la imagen cubra todo el espacio */
+    background-position: center !important; /* Centra la imagen */
+    background-repeat: no-repeat !important;
+    background-color: #f38d07; /* Color de respaldo por si la imagen falla */
+}
+
+/* 2. Ajustamos la "cortina" (Overlay) para que el texto se lea bien sobre la foto */
+.page-hero.page-hero--parque5 .hero-overlay {
+    /* Usamos un negro semitransparente para que el texto blanco resalte */
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%) !important;
+    opacity: 1 !important;
+}

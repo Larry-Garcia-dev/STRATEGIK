@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta - Strategik Inmobiliaria</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <a href="https://wa.me/573144262626" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header class="header-top">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="contact-info">
+                        <a href="tel:+573144262626"><i class="fas fa-phone"></i> +57 3144262626</a>
+                        <a href="mailto:comercial@strategik.com.co"><i class="fas fa-envelope"></i> comercial@strategik.com.co</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <style>
+        /* Estilos forzados para las tarjetas */
+        .property-card {
+            background-color: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(245, 126, 18, 0.3);
+        }
+
+        .property-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .property-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .property-content {
+            padding: 25px;
+        }
+
+        .property-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .text-primary {
+            color: #f57e12 !important;
+        }
+
+        .btn-primary {
+            background-color: #f57e12;
+            border-color: #f57e12;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #d66d0f;
+        }
+    </style>
+
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <img src="/img/Imagotipo_Negro.png" alt="Strategik Logo" class="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                 <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="inmuebles.html">Inmuebles</a></li>
+
+                    <li class="nav-item"><a class="nav-link" href="parque1.html">Parque 1</a></li>
+                    <li class="nav-item"><a class="nav-link" href="parque2.html">Parque 2</a></li>
+                    <li class="nav-item"><a class="nav-link" href="otros_servicios.html">Otros Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contáctenos</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+ <section class="page-hero page-hero--parque3">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 style="color: white;" class="hero-title animate-fade-in">INMUEBLES</h1>
+            <p class="hero-subtitle animate-fade-in-delay">Espacios para grandes sueños</p>
+        </div>
+    </section>
+
+    <section class="breadcrumb-section py-3">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../index.html">Inicio</a></li>
+                    <li class="breadcrumb-item">Inmobiliaria</li>
+                    <li class="breadcrumb-item active">Venta</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+
+    
+         <section class="properties-section py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-5 animate-on-scroll">VENTA / ARRIENDO</h2>
+
+            <div class="row" id="arriendos-container">
+                <div class="col-12 text-center py-5">
+                    <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+                        <span class="visually-hidden">Cargando...</span>
+                    </div>
+                    <p class="mt-3">Cargando inmuebles...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mb-4 mb-lg-0">
+                    <h2 class="section-title mb-3">¿Busca Vender su Propiedad?</h2>
+                    <p class="section-text">Contáctenos y le ayudaremos a encontrar el mejor comprador para su inmueble.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="contacto.html" class="btn btn-primary btn-lg">Contáctenos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="detalleModal" tabindex="-1" aria-labelledby="detalleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="modalTitulo">Título del Inmueble</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="carouselDetalle" class="carousel slide mb-4 bg-dark" data-bs-ride="carousel">
+                        <div class="carousel-inner" id="carouselImgs">
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselDetalle"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Anterior</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselDetalle"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Siguiente</span>
+                        </button>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-7">
+                            <h3 class="text-primary fw-bold" id="modalPrecio">$0</h3>
+                            <span class="badge bg-secondary mb-3" id="modalCodigo">Cod: --</span>
+
+                            <h5 class="mt-3">Descripción:</h5>
+                            <p id="modalDescripcion" style="white-space: pre-line; color: #555;">Cargando descripción...
+                            </p>
+                        </div>
+                        <div class="col-md-5 border-start">
+                            <div class="p-3 bg-light rounded">
+                                <h5><i class="fas fa-map-marker-alt text-danger"></i> Ubicación</h5>
+                                <p id="modalUbicacion" class="fs-5">--</p>
+                                <hr>
+                                <p class="small text-muted">¿Te interesa este inmueble?</p>
+
+                                <a id="btnWhatsapp" href="javascript:void(0)" class="btn btn-success w-100 btn-lg"
+                                    target="_blank">
+                                    <i class="fab fa-whatsapp"></i> Contactar Asesor
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="contact-main-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <div class="contact-info-main animate-on-scroll">
+                        <h2 class="section-title mb-4">Información de Contacto</h2>
+                        
+                        <div class="contact-detail-item">
+                            <div class="contact-detail-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-detail-content">
+                                <h4>Ubicación</h4>
+                                <p>Ibagué - Tolima</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-detail-item">
+                            <div class="contact-detail-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-detail-content">
+                                <h4>Teléfono</h4>
+                                <p><a href="tel:+573144262626">+57 3144262626</a></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-detail-item">
+                            <div class="contact-detail-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-detail-content">
+                                <h4>E-Mail</h4>
+                                <p><a href="mailto:comercial@strategik.com.co">comercial@strategik.com.co</a></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-detail-item">
+                            <div class="contact-detail-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="contact-detail-content">
+                                <h4>WhatsApp</h4>
+                                <p><a href="https://wa.me/573144262626" target="_blank">+57 3144262626</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="contact-form-main animate-on-scroll">
+                        <h2 class="section-title mb-4">Envíenos un Mensaje</h2>
+                        <form id="mainContactForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="nombre" class="form-label">Nombre *</label>
+                                    <input type="text" class="form-control" id="nombre" placeholder="Su nombre completo" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">Email *</label>
+                                    <input type="email" class="form-control" id="email" placeholder="su@email.com" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="telefono" class="form-label">Teléfono *</label>
+                                    <input type="tel" class="form-control" id="telefono" placeholder="+57 300 000 0000" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="ciudad" class="form-label">Ciudad *</label>
+                                    <input type="text" class="form-control" id="ciudad" placeholder="Su ciudad" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="asunto" class="form-label">Asunto</label>
+                                <select class="form-control" id="asunto">
+                                    <option value="">Seleccione un asunto</option>
+                                    <option value="venta">Venta de Propiedad</option>
+                                    <option value="arriendo">Arriendo de Propiedad</option>
+                                    <option value="parque1">Información Parque 1</option>
+                                    <option value="parque2">Información Parque 2</option>
+                                    <option value="general">Consulta General</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="mensaje" class="form-label">Mensaje *</label>
+                                <textarea class="form-control" id="mensaje" rows="5" placeholder="Escriba su mensaje aquí..." required></textarea>
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="privacyCheckMain" required>
+                                <label class="form-check-label" for="privacyCheckMain">
+                                    Acepto la Política de privacidad de protección de datos. *
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg w-100">
+                                <i class="fas fa-paper-plane me-2"></i> Enviar Mensaje
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo_Degradado_Blanco%20-%20copia-ccBSknPy1OcYxLPRzJ2gkWRBDj3RoK.png" alt="Strategik Logo" class="footer-logo mb-3">
+                    <p class="footer-text">Nuestros parques están desarrollados con una infraestructura ideal para las empresas de carácter logístico de impacto regional y nacional.</p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h4 class="footer-title">Site Map</h4>
+                     <ul class="footer-links">
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="parque1.html">Parque 1</a></li>
+                        <li><a href="parque2.html">Parque 2</a></li>
+                        <li><a href="venta.html">Inmuebles</a></li>
+                        <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+                        <li><a href="contacto.html">Contáctenos</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h4 class="footer-title">Información</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-phone"></i> +57 3144262626</li>
+                        <li><i class="fas fa-envelope"></i> comercial@strategik.com.co</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Ibagué - Tolima</li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h4 class="footer-title">Síguenos</h4>
+                      <div class="social-links">
+                        <a href="https://www.facebook.com/people/Parques-Empresariales-Strategik/100090404536591/" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/strategik_inmobiliaria/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/strategik-parques-empresariales-358a142a3/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="footer-copyright">All Copyright © 2025 STRATEGIK</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/script.js"></script>
+        <script src="../api/arriendos.js"></script>
+
+</body>
+</html>

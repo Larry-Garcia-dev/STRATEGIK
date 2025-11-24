@@ -42,7 +42,7 @@ async function cargarInmuebles() {
                 <div class="property-card h-100 shadow-sm">
                     <div class="property-image position-relative">
                         <img src="${imagen}" alt="${inm.titulo}" class="img-fluid w-100" style="height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x300?text=Sin+Imagen'">
-                        <div class="property-badge rent position-absolute top-0 end-0 m-3 badge bg-success">En Arriendo</div>
+                        <div class="property-badge rent position-absolute top-0 end-0 m-3 badge" style="background-color:#f38d07;" >Venta</div>
                     </div>
                     <div class="property-content p-4">
                         <h3 class="property-title h5 fw-bold mb-2 text-dark">${inm.titulo}</h3>
