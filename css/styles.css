@@ -1421,3 +1421,82 @@ img {
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%) !important;
     opacity: 1 !important;
 }
+
+.page-hero.page-hero--parque6 {
+    background-image: url('/img/anoters/174.png') !important; /* Ruta de tu imagen */
+    background-size: cover !important;    /* Asegura que la imagen cubra todo el espacio */
+    background-position: center !important; /* Centra la imagen */
+    background-repeat: no-repeat !important;
+    background-color: #f38d07; /* Color de respaldo por si la imagen falla */
+}
+
+/* 2. Ajustamos la "cortina" (Overlay) para que el texto se lea bien sobre la foto */
+.page-hero.page-hero--parque6 .hero-overlay {
+    /* Usamos un negro semitransparente para que el texto blanco resalte */
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%) !important;
+    opacity: 1 !important;
+}
+
+/* --- INICIO Estilos Exclusivos Carrusel Empresas --- */
+
+/* 1. Contenedor principal con nombre único */
+.companies-marquee-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding: 10px 0; /* Un poco de aire arriba y abajo */
+}
+
+/* 2. La pista que se mueve (Track) */
+.companies-marquee-track {
+    display: flex;
+    /* Cálculo: 12 items totales. Queremos ver 5 a la vez.
+       Ancho de cada item = 20% (100/5).
+       Ancho total track = 20% * 12 items = 240% */
+    width: calc(20% * 12); 
+    
+    /* Animación rápida (10s) y lineal */
+    animation: companies-scroll-animation 10s linear infinite;
+}
+
+/* 3. Cada item individual */
+.companies-marquee-item {
+    width: 20%; /* Ocupa 1/5 del ancho visible */
+    padding: 0 20px; /* Espacio entre logos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.companies-marquee-item img {
+    width: 100%;
+    max-width: 150px; /* Controla el tamaño máximo del logo */
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* 4. La animación con nombre único */
+@keyframes companies-scroll-animation {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* Se mueve exactamente la mitad (50%) porque tenemos 2 grupos idénticos */
+        transform: translateX(-50%); 
+    }
+}
+
+/* Ajuste Responsivo para Móviles */
+@media (max-width: 768px) {
+    /* En móvil mostramos 3 logos en vez de 5 para que se vean bien */
+    .companies-marquee-track {
+        width: calc(33.333% * 12); 
+    }
+    .companies-marquee-item {
+        width: 33.333%;
+    }
+}
+
+/* --- FIN Estilos Exclusivos Carrusel Empresas --- */
