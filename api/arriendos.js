@@ -122,7 +122,7 @@ async function verDetalle(id) {
         // ---------------------------------------------------------
         const btnWhatsapp = document.getElementById('btnWhatsapp');
         if (btnWhatsapp) {
-            const telefono = "573144262626"; // TU NUMERO AQUÍ
+            const telefono = "573144113333"; // TU NUMERO AQUÍ
             
             // Personalizamos el mensaje dependiendo si es Venta o Arriendo
             const accion = data.tipo_oferta === 'Venta' ? 'comprar' : 'arrendar';
