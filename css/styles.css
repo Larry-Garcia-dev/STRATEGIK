@@ -1335,7 +1335,7 @@ img {
 @media (max-width: 768px) {
     .hero-video-section {
         /* En celular reducimos la altura para que se vea contenido abajo */
-        height: 40vh; 
+        height: 30vh; 
     }
 }
 
